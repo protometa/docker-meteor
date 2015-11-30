@@ -1,4 +1,4 @@
-Docker Runtime for Meteor Apps
-==============================
+Docker Runtime for Meteor Apps Development
+==========================================
 
-Dockerized Meteor.js installation for development and production.
+Dockerized Meteor.js installation for development.
