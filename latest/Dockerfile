@@ -9,4 +9,4 @@ WORKDIR /app
 EXPOSE 80
 
 # Run application
-CMD ["meteor", "--port", 80]
+CMD ["meteor", "--port", "80"]
