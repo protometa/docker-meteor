@@ -1,2 +1,4 @@
-# docker-meteor
-Dockerized Meteor.js installation for dev and prod
+Docker Runtime for Meteor Apps
+==============================
+
+Dockerized Meteor.js installation for development and production.
