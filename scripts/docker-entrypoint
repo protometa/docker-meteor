@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Delete build tools
+rm -rf /opt/meteor/tools
+
+# Default values
+: ${PORT:="80"}
+: ${ROOT_URL:="http://localhost"}
+: ${METEOR_SETTINGS_FILE:="settings.json"}
+export PORT
+export ROOT_URL
+export METEOR_SETTINGS_FILE
+
+# If we were given arguments, run them instead
+if [ ! $# -eq 0 ]
+then
+   exec "$@"
+   exit
+fi
+
+# Check whether the bundle exists
+cd /opt/meteor/bundle
+if [ -a "star.json" ]
+then
+    echo "Running Meteor application in production mode..."
+    su -c "exec node main.js" -s /bin/bash nobody
+    exit
+fi
+
+# Run in development mode
+cd /app
+METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n')
+if [ -n "${METEOR_DIR}" ]
+then
+    echo "Running Meteor application in development mode..."
+    cd ${METEOR_DIR}/..
+    if [ -a "${METEOR_SETTINGS_FILE}" ]
+    then
+        exec meteor --port ${PORT} --settings ${METEOR_SETTINGS_FILE}
+    else
+        exec meteor --port ${PORT}
+    fi
+fi
+
+echo "Meteor application not found! Exiting..."
+exit 1

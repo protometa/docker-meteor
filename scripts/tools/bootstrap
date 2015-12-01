@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Create bundle target dir
+mkdir -p /opt/meteor/bundle
+
+# Remove temp files
+rm -rf /tmp/*
