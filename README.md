@@ -89,30 +89,11 @@ And access it via `http://localhost:80`.
 
 #### Running existing Meteor bundle
 
-In case if you already have a Meteor bundle created for you app (for example in some CI service),
+In case if you already have a Meteor bundle created for you app (for example with some CI service),
 you can use it instead of building a new bundle from the source code.
 
-Currently, two options of doing that are supported:
-
-##### Directory bundle
-
-Use the following `Dockerfile`
-
-```
-FROM codexsystems/meteor
-
-COPY ./your_bundle_dir/* ./app
-```
-
-##### Archived bundle
-
-Use the following `Dockerfile`
-
-```
-FROM codexsystems/meteor
-
-COPY ./bundle.tar.gz ./app
-```
+All you need to do in such case is to have your `bundle` directory or your `bundle.tar.gz` file in the project
+document root during Docker image build process.
 
 
 Configuration
@@ -122,8 +103,6 @@ This image supports the [same environment variables](http://www.meteorpedia.com/
 
 However, there are also few additional environment variables supported that are used for better image usability:
 
-- `METEOR_BUNDLE_FILE` - The name of the archived bundle file (see "[Archived bundle](#archived-bundle)" section).
-Default value: *bundle.tar.gz*.
 - `METEOR_SETTINGS_FILE` - In the [Local development](#local-development) mode, this image will try to locate your `settings.json` file and attach it to the Meteor.
 You can use this environment variable if your settings file is named somehow else.
 Default value: *settings.json*.

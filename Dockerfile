@@ -16,7 +16,8 @@ EXPOSE 80
 # Deploy and build the code
 RUN /opt/meteor/tools/bootstrap
 ONBUILD COPY ./ /usr/local/src/meteor/
-ONBUILD RUN /opt/meteor/tools/onbuild
+ONBUILD RUN /opt/meteor/tools/bundle
+ONBUILD RUN /opt/meteor/tools/finish
 
 # Run application
 ENTRYPOINT ["docker-entrypoint"]

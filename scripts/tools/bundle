@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Check whether bundle is built already
+echo "Searching for a prebuilt application bundle..."
+cd /usr/local/src/meteor/
+if [ -f *.tar.gz ]
+then
+    echo "Archived application bundle is found!"
+    tar -xf *.tar.gz --strip 1 -C /opt/meteor/bundle
+    exit
+fi
+if [ -d "bundle" ]
+then
+    cd ./bundle
+    if [ -a "star.json" ]
+    then
+        echo "Unpacked application bundle is found!"
+        mv * /opt/meteor/bundle
+        exit
+    fi
+fi
+echo "Prebuilt application bundle not found."
+
+# Locate the ".meteor" folder
+cd /usr/local/src/meteor
+echo "Searching for application source code..."
+METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n')
+if [ ! -n "${METEOR_DIR}" ]
+then
+    echo "Failed to locate application bundle or source code! Please check container configuration."
+    exit 1
+fi
+
+# Build bundle from the source code
+cd ${METEOR_DIR}/..
+echo "Building bundle from the source code..."
+meteor build --directory /opt/meteor
+rm -rf /usr/local/src/meteor
+echo "Build complete!"
