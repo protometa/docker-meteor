@@ -1,6 +1,11 @@
 Docker Runtime for Meteor Apps
 ==============================
 
+[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/codexsystems/meteor/latest.svg)](https://imagelayers.io/?images=codexsystems%2Fmeteor:latest)
+[![ImageLayers Layers](https://img.shields.io/imagelayers/layers/codexsystems/meteor/latest.svg)](https://imagelayers.io/?images=codexsystems%2Fmeteor:latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/codexsystems/meteor.svg)](https://hub.docker.com/r/codexsystems/meteor/)
+[![Docker Stars](https://img.shields.io/docker/stars/codexsystems/meteor.svg)](https://img.shields.io/docker/pulls/codexsystems/meteor.svg)
+
 Meteor Dockerized for Development and Production.
 
 
