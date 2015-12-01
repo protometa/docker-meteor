@@ -15,7 +15,7 @@ EXPOSE 80
 
 # Deploy and build the code
 RUN /opt/meteor/tools/bootstrap
-ONBUILD COPY . /usr/local/src/meteor
+ONBUILD COPY ./ /usr/local/src/meteor/
 ONBUILD RUN /opt/meteor/tools/onbuild
 
 # Run application
