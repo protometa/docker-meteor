@@ -73,14 +73,14 @@ Then run it:
 
 ```
 docker run -d \
+    --link mongo \
     -e ROOT_URL=http://localhost \
-    -e MONGO_URL=mongodb://url \
-    -e MONGO_OPLOG_URL=mongodb://oplog_url \
+    -e MONGO_URL=mongodb://mongo \
     -p 80:80 \
     yourname/app
 ```
 
-And access it via `http://localhost`.
+And access it via `http://localhost:80`.
 
 #### Running existing Meteor bundle
 
@@ -117,9 +117,11 @@ This image supports the [same environment variables](http://www.meteorpedia.com/
 
 However, there are also few additional environment variables supported that are used for better image usability:
 
-- METEOR_BUNDLE_FILE - The name of the archived bundle file (see "[Archived bundle][]" section). Default value: *bundle.tar.gz*.
-- METEOR_SETTINGS_FILE - In the [Local development][] mode, this image will try to locate your `settings.json` file and attach it to the Meteor.
-You can use this environment variable if your settings file is named somehow else.  Default value: *settings.json*.
+- `METEOR_BUNDLE_FILE` - The name of the archived bundle file (see "[Archived bundle](#archived-bundle)" section).
+Default value: *bundle.tar.gz*.
+- `METEOR_SETTINGS_FILE` - In the [Local development](#local-development) mode, this image will try to locate your `settings.json` file and attach it to the Meteor.
+You can use this environment variable if your settings file is named somehow else.
+Default value: *settings.json*.
 
 
 Report
@@ -131,11 +133,11 @@ Report
 License
 -------
 
-**codexsystems/meteor** image is released under the MIT License. See the bundled `LICENSE.md` for details.
+This image is released under the MIT License. See the bundled [LICENSE.md](https://raw.githubusercontent.com/codexsystems/docker-meteor/master/LICENSE.md) for details.
 
 
 Resources
 ---------
 
-- [DockerHub Page](#)
+- [DockerHub Page](https://hub.docker.com/r/codexsystems/meteor/)
 - [Source Code](https://github.com/codexsystems/docker-meteor)
