@@ -2,8 +2,8 @@ FROM nodesource/trusty:0.10.40
 MAINTAINER Ivan Koptiev <ivan.koptiev@codex.systems>
 
 # Copy build tools
-COPY ./scripts/tools /opt/meteor/tools
-COPY ./scripts/docker-entrypoint /usr/local/bin
+COPY ./scripts/tools/ /opt/meteor/tools/
+COPY ./scripts/docker-entrypoint /usr/local/bin/
 
 # Install Meteor
 ENV METEOR_VERSION 1.2.1
