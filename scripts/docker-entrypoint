@@ -31,7 +31,7 @@ fi
 
 # Run in development mode
 cd /app
-METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n')
+METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n' | head -1)
 if [ -n "${METEOR_DIR}" ]
 then
     echo "Running Meteor application in development mode..."
