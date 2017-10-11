@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
@@ -26,7 +26,7 @@ echo "Prebuilt application bundle not found."
 # Locate the ".meteor" folder
 cd /usr/local/src/meteor
 echo "Searching for application source code..."
-METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n')
+METEOR_DIR=$(find ./ -type d -name .meteor -print | head -1)
 if [ ! -n "${METEOR_DIR}" ]
 then
     echo "Failed to locate application bundle or source code! Please check container configuration."

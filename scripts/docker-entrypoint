@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
@@ -22,20 +22,21 @@ fi
 
 # Check whether the bundle exists
 cd /opt/meteor/bundle
-if [ -a "star.json" ]
+if [ -e "star.json" ]
 then
     echo "Running Meteor application in production mode..."
-    su -c "exec node main.js" -s /bin/bash nobody
+    su -c "exec meteor node main.js" -s /bin/bash nobody
     exit
 fi
 
 # Run in development mode
 cd /app
-METEOR_DIR=$(find ./ -type d -name .meteor -printf '%P\n' | head -1)
+METEOR_DIR=$(find ./ -type d -name .meteor -print | head -1)
 if [ -n "${METEOR_DIR}" ]
 then
     echo "Running Meteor application in development mode..."
     cd ${METEOR_DIR}/..
+    meteor npm install
     if [ -a "${METEOR_SETTINGS_FILE}" ]
     then
         exec meteor --port ${PORT} --settings ${METEOR_SETTINGS_FILE}

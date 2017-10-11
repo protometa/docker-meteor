@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-echo "Installing Meteor version ${METEOR_VERSION}..."
-curl -SL https://install.meteor.com/ | \
- sed -e "s/^RELEASE=.*/RELEASE=\"\$METEOR_VERSION\"/" | \
- sh
-echo "Meteor installation complete!"

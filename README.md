@@ -1,27 +1,9 @@
 Docker Runtime for Meteor Apps
 ==============================
 
-[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/codexsystems/meteor/latest.svg)](https://imagelayers.io/?images=codexsystems%2Fmeteor:latest)
-[![ImageLayers Layers](https://img.shields.io/imagelayers/layers/codexsystems/meteor/latest.svg)](https://imagelayers.io/?images=codexsystems%2Fmeteor:latest)
-[![Docker Pulls](https://img.shields.io/docker/pulls/codexsystems/meteor.svg)](https://hub.docker.com/r/codexsystems/meteor/)
-[![Docker Stars](https://img.shields.io/docker/stars/codexsystems/meteor.svg)](https://img.shields.io/docker/pulls/codexsystems/meteor.svg)
+Forked from [codexsystems/docker-meteor](https://github.com/codexsystems/docker-meteor)
 
 Meteor Dockerized for Development and Production.
-
-
-What is Meteor?
----------------
-
-Meteor is an ultra-simple environment for building modern web applications.
-
-With Meteor you write apps:
-
-- in pure JavaScript;
-- that send data over the wire, rather than HTML;
-- using your choice of popular open-source libraries.
-
-Documentation is available at [http://docs.meteor.com/](http://docs.meteor.com/).
-
 
 What is this image?
 -------------------
@@ -106,22 +88,3 @@ However, there are also few additional environment variables supported that are 
 - `METEOR_SETTINGS_FILE` - In the [Local development](#local-development) mode, this image will try to locate your `settings.json` file and attach it to the Meteor.
 You can use this environment variable if your settings file is named somehow else.
 Default value: *settings.json*.
-
-
-Report
-------
-
-- Report any issues [on the GitHub](https://github.com/codexsystems/docker-meteor/issues).
-
-
-License
--------
-
-This image is released under the MIT License. See the bundled [LICENSE.md](https://raw.githubusercontent.com/codexsystems/docker-meteor/master/LICENSE.md) for details.
-
-
-Resources
----------
-
-- [DockerHub Page](https://hub.docker.com/r/codexsystems/meteor/)
-- [Source Code](https://github.com/codexsystems/docker-meteor)

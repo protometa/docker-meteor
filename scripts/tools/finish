@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
 # Install NPM dependencies
 cd /opt/meteor/bundle/programs/server
 echo "Installing NPM dependencies..."
-npm install
+meteor npm install
 echo "NPM dependencies installation complete!"
 
 # Remove temp files

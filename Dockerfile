@@ -1,13 +1,17 @@
-FROM nodesource/trusty:0.10.40
-MAINTAINER Ivan Koptiev <ivan.koptiev@codex.systems>
+# need node for potential npm module building
+# (even if you use `meteor npm`)
+FROM node:4
+MAINTAINER Luke Nimtz <lnimtz@gummicube.com>
+
+# Install Meteor
+ENV METEOR_VERSION 1.3.5.1
+RUN cd /root && curl -fSL https://static-meteor.netdna-ssl.com/packages-bootstrap/${METEOR_VERSION}/meteor-bootstrap-os.linux.x86_64.tar.gz | \
+  tar xz
+ENV PATH $PATH:/root/.meteor
 
 # Copy build tools
 COPY ./scripts/tools/ /opt/meteor/tools/
 COPY ./scripts/docker-entrypoint /usr/local/bin/
-
-# Install Meteor
-ENV METEOR_VERSION 1.2.1
-RUN /opt/meteor/tools/installer
 
 # Expose resources
 VOLUME /app
