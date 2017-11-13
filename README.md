@@ -26,21 +26,24 @@ When working with this image locally, all you need to do is to mount a folder wi
 Here is the `docker-compose` example:
 
 ```
-meteor-app:
-  image: codexsystems/meteor
-  restart: unless-stopped
-  links:
-    - mongo
-  volumes:
-    - ./:/app
-  ports:
-    - 80:80
-  environment:
-    MONGO_URL: mongodb://mongo
-    ROOT_URL: http://localhost
-    
-mongo:
-  image: mongo
+version: '3'
+
+services:
+  meteor-app:
+    image: codexsystems/meteor
+    restart: unless-stopped
+    links:
+      - mongo
+    volumes:
+      - ./:/app
+    ports:
+      - 80:80
+    environment:
+      MONGO_URL: mongodb://mongo
+      ROOT_URL: http://localhost
+      
+  mongo:
+    image: mongo
 ```
 
 By doing this you will have you Meteor app listening on `http://localhost:80` and hot code pushes working.
