@@ -38,6 +38,9 @@ meteor-app:
   environment:
     MONGO_URL: mongodb://mongo
     ROOT_URL: http://localhost
+    
+mongo:
+  image: mongo
 ```
 
 By doing this you will have you Meteor app listening on `http://localhost:80` and hot code pushes working.
