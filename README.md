@@ -30,7 +30,7 @@ version: '3'
 
 services:
   meteor-app:
-    image: codexsystems/meteor
+    image: 129966181679.dkr.ecr.us-east-1.amazonaws.com/meteor
     restart: unless-stopped
     links:
       - mongo
