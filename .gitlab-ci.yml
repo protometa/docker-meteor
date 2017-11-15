@@ -13,6 +13,14 @@ build-latest:
   only:
     - master
 
+build-tags:
+  stage: build
+  script:
+    - docker build --pull -t "$IMAGE:$CI_COMMIT_TAG" .
+    - docker push "$IMAGE:$CI_COMMIT_TAG"
+  only:
+    - tags
+
 build:
   stage: build
   script:
@@ -20,3 +28,4 @@ build:
     - docker push "$IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
+    - tags
