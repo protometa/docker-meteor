@@ -1,10 +1,10 @@
 # need node for potential npm module building
 # (even if you use `meteor npm`)
-FROM node:4
+FROM node:8
 MAINTAINER Luke Nimtz <lnimtz@gummicube.com>
 
 # Install Meteor
-ENV METEOR_VERSION 1.3.5.1
+ENV METEOR_VERSION 1.6
 RUN cd /root && curl -fSL https://static-meteor.netdna-ssl.com/packages-bootstrap/${METEOR_VERSION}/meteor-bootstrap-os.linux.x86_64.tar.gz | \
   tar xz
 ENV PATH $PATH:/root/.meteor
