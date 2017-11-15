@@ -1,0 +1,22 @@
+
+before_script:
+  - $(aws ecr get-login --no-include-email) # docker login command
+  
+variables:
+  IMAGE: '129966181679.dkr.ecr.us-east-1.amazonaws.com/meteor'
+
+build-latest:
+  stage: build
+  script:
+    - docker build --pull -t "$IMAGE" .
+    - docker push "$IMAGE"
+  only:
+    - master
+
+build:
+  stage: build
+  script:
+    - docker build --pull -t "$IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$IMAGE:$CI_COMMIT_REF_SLUG"
+  except:
+    - master
