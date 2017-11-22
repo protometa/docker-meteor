@@ -9,6 +9,8 @@ RUN cd /root && curl -fSL https://static-meteor.netdna-ssl.com/packages-bootstra
   tar xz
 ENV PATH $PATH:/root/.meteor
 
+ENV METEOR_ALLOW_SUPERUSER=1
+
 # Copy build tools
 COPY ./scripts/tools/ /opt/meteor/tools/
 COPY ./scripts/docker-entrypoint /usr/local/bin/
