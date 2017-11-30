@@ -36,6 +36,7 @@ fi
 # Build bundle from the source code
 cd ${METEOR_DIR}/..
 echo "Building bundle from the source code..."
+npm install
 meteor build --directory /opt/meteor
 rm -rf /usr/local/src/meteor
 echo "Build complete!"
