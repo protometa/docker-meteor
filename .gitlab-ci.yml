@@ -1,31 +1,32 @@
+image: docker:latest
+
+services:
+  - docker:dind
 
 before_script:
-  - $(aws ecr get-login --no-include-email) # docker login command
-  
-variables:
-  IMAGE: '129966181679.dkr.ecr.us-east-1.amazonaws.com/meteor'
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 build-latest:
   stage: build
   script:
-    - docker build --pull -t "$IMAGE" .
-    - docker push "$IMAGE"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
   only:
     - master
 
 build-tags:
   stage: build
   script:
-    - docker build --pull -t "$IMAGE:$CI_COMMIT_TAG" .
-    - docker push "$IMAGE:$CI_COMMIT_TAG"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
   only:
     - tags
 
 build:
   stage: build
   script:
-    - docker build --pull -t "$IMAGE:$CI_COMMIT_REF_SLUG" .
-    - docker push "$IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
     - tags
