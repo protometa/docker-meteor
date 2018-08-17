@@ -37,6 +37,7 @@ fi
 cd ${METEOR_DIR}/..
 echo "Building bundle from the source code..."
 export NODE_ENV=production
+echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
 meteor npm install
 meteor build --directory /opt/meteor
 rm -rf /usr/local/src/meteor
