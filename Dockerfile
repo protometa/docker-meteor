@@ -22,6 +22,8 @@ EXPOSE 80
 # Deploy and build the code
 RUN /opt/meteor/tools/bootstrap
 ONBUILD ARG NPM_TOKEN
+ONBUILD ARG SSH_PRIVATE_KEY
+ONBUILD ARG SSH_KNOWN_HOSTS
 ONBUILD COPY ./ /usr/local/src/meteor/
 ONBUILD RUN /opt/meteor/tools/bundle
 ONBUILD RUN /opt/meteor/tools/finish

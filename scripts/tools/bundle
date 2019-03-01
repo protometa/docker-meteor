@@ -37,7 +37,11 @@ fi
 cd ${METEOR_DIR}/..
 echo "Building bundle from the source code..."
 export NODE_ENV=production
-echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+[ -n "$NPM_TOKEN" ] && echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+mkdir -p ~/.ssh
+[ -n "$SSH_PRIVATE_KEY" ] && echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+[ -n "$SSH_KNOWN_HOSTS" ] && echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+chmod -R 700 ~/.ssh
 meteor npm install
 meteor build --directory /opt/meteor
 rm -rf /usr/local/src/meteor
